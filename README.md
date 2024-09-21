@@ -1,2 +1,1 @@
-# Zombie-game
-Zombie game for midterm
+this is a zombie-shooting game with typing in C language.
