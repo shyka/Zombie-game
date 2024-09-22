@@ -191,7 +191,7 @@ int main(void)
             printf("if you want to play again, please enter 1, if not enter 0\n");
             while (key_end == 0)
             {
-                scanf("%d", &key_type);
+                scanf(" %c", &key_type);
                 switch (key_type)
                 {
                 // 優化程式
