@@ -213,7 +213,7 @@ int main(void)
                     clearScreen();
                     printf("thank you for playing\n");
                     break;
-                default: //防呆裝置
+                default: //防呆設定
                     clearScreen();
                     printf("please enter again,you enter wrong code\n");
                     key_end = 0;
