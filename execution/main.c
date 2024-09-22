@@ -158,13 +158,13 @@ int content(void)
 int main(void)
 {
     char begin = '1';
-    int key = 1, key_end = 0, again = 0;
+    int key = 1, key_type, key_end = 0, again = 0;
     while (key == 1)
     {
 
         printf("welcome to the game of shooting Zombies\n");
         printf("if you want to start the game, please enter 1, if not enter 0\n");
-    here: // 優化城式
+    here: // 優化程式
         scanf(" %c", &begin);
         clearScreen();
     there:
@@ -191,8 +191,8 @@ int main(void)
             printf("if you want to play again, please enter 1, if not enter 0\n");
             while (key_end == 0)
             {
-                scanf("%d", &key);
-                switch (key)
+                scanf("%d", &key_type);
+                switch (key_type)
                 {
                 // 優化程式
                 case 1:
