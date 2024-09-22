@@ -6,8 +6,8 @@
 char str1[4] = "100", str2[4] = "010", str3[4] = "001", line_1[4], line_2[4], line_3[4];
 void clearScreen()
 {
-
-    system("cls");
+    char cls[4];
+    system(cls);
 }
 
 int content(void)
@@ -169,7 +169,7 @@ int main(void)
 
         printf("welcome to the game of shooting Zombies\n");
         printf("if you want to start the game, please enter 1, if not enter 0\n");
-    here: // 優化城式
+    here: // 優化程式
         scanf("%d", &begin);
         clearScreen();
 
