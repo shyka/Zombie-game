@@ -191,6 +191,7 @@ int main(void)
             printf("if you want to play again, please enter 1, if not enter 0\n");
             while (key_end == 0)
             {
+            this:
                 scanf("%d", &key_type);
                 switch (key_type)
                 {
@@ -215,6 +216,8 @@ int main(void)
                     clearScreen();
                     printf("please enter again,you enter wrong code\n");
                     key_end = 0;
+                    goto this;
+                    break;
                 }
             }
         }
