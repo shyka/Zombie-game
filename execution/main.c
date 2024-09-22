@@ -155,7 +155,9 @@ int content(void)
     }
     return 0;
 }
-int main(void) //遊玩詢問程式
+
+//遊玩詢問主程式
+int main(void) 
 {
     char begin = '1', key_type = '1'; //為輸入型字元，用來判斷遊玩的執行與否
     int key = 1, key_end = 0, again = 0;
