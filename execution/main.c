@@ -6,8 +6,8 @@
 char str1[4] = "100", str2[4] = "010", str3[4] = "001", line_1[4], line_2[4], line_3[4];
 void clearScreen()
 {
-    char cls[4];
-    system(cls);
+
+    system("cls");
 }
 
 int content(void)
@@ -65,7 +65,7 @@ int content(void)
     printf("%s\n", line_1);
     printf("%s\n", line_2);
     printf("%s\n", line_3);
-    int key_all = 1, key_begin = 0, key = 1;
+    int key_all = 1, key = 1;
     // key_all為總遊戲控制循環，key_begin為使用者輸入的保險絲
     while (key_all == 1)
     {
@@ -75,31 +75,26 @@ int content(void)
         case 'A':
         case 'a': // 對應打殭屍種類
             strcpy(gamerin, str1);
-            key_begin = 1;
             clearScreen();
             break;
         case 'S':
         case 's':
             strcpy(gamerin, str2);
-            key_begin = 1;
             clearScreen();
             break;
         case 'D':
         case 'd':
             strcpy(gamerin, str3);
-            key_begin = 1;
             clearScreen();
             break;
         case 'F':
         case 'f': // 跳脫遊戲
-            key_begin = 1;
             key = 0;
             clearScreen();
             break;
         default: // 防呆機制
             printf("please enter again,you enter wrong code\n");
             continue; // 優化程式
-            key_begin = 0;
         }
 
         if (key == 1) // key為遊戲結束控制字元
@@ -143,7 +138,6 @@ int content(void)
                 printf("%s\n", line_1);
                 printf("%s\n", line_2);
                 printf("%s\n", line_3);
-                key_begin = 0;
             }
             else // 輸，遊戲結束
             {
@@ -163,23 +157,28 @@ int content(void)
 }
 int main(void)
 {
-    int begin = 1, key = 1, key_end = 0;
+    char begin = '1';
+    int key = 1, key_end = 0, again = 0;
     while (key == 1)
     {
 
         printf("welcome to the game of shooting Zombies\n");
         printf("if you want to start the game, please enter 1, if not enter 0\n");
-    here: // 優化程式
-        scanf("%d", &begin);
+    here: // 優化城式
+        scanf(" %c", &begin);
         clearScreen();
-
+    there:
         switch (begin)
         {
-        case 1:
+        case '1':
             content();
+            again = 1;
+            key_end = 0;
             break;
-        case 0:
+        case '0':
             printf("thank you for playing\n");
+            again = 0;
+            key = 0;
             break;
         default:
             printf("please enter again, you enter wrong code\n");
@@ -187,26 +186,38 @@ int main(void)
             break;
         }
 
-        printf("if you want to play again, please enter 1, if not enter 0\n");
-        while (key_end == 0)
+        while (again == 1)
         {
-            scanf("%d", &key);
-            switch (key)
+            printf("if you want to play again, please enter 1, if not enter 0\n");
+            while (key_end == 0)
             {
-            // 優化程式
-            case 1:
-            case 0:
-                key_end = 1;
-                key = 0;
-                clearScreen();
-                break;
-            default:
-                clearScreen();
-                printf("please enter again,you enter wrong code\n");
-                key_end = 0;
+                scanf("%d", &key);
+                switch (key)
+                {
+                // 優化程式
+                case 1:
+                    key_end = 1;
+                    key = 1;
+                    begin = '1';
+                    again = 0;
+                    clearScreen();
+                    printf("lets play again !!!\n");
+                    goto there;
+                    break;
+                case 0:
+                    key_end = 1;
+                    key = 0;
+                    again = 0;
+                    clearScreen();
+                    printf("thank you for playing\n");
+                    break;
+                default:
+                    clearScreen();
+                    printf("please enter again,you enter wrong code\n");
+                    key_end = 0;
+                }
             }
         }
     }
-    printf("thank you for playing\n");
     return 0;
 }
