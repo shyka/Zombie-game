@@ -157,7 +157,7 @@ int content(void)
 }
 int main(void) //遊玩詢問程式
 {
-    char begin = '1', key_type = '1';
+    char begin = '1', key_type = '1'; //為輸入型字元，用來判斷遊玩的執行與否
     int key = 1, key_end = 0, again = 0;
     while (key == 1) //開頭歡迎遊玩介面
     {
