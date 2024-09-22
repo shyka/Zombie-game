@@ -157,8 +157,8 @@ int content(void)
 }
 int main(void)
 {
-    char begin = '1';
-    int key = 1, key_type, key_end = 0, again = 0;
+    char begin = '1', key_type = '1';
+    int key = 1, key_end = 0, again = 0;
     while (key == 1)
     {
 
@@ -195,7 +195,7 @@ int main(void)
                 switch (key_type)
                 {
                 // 優化程式
-                case 1:
+                case '1':
                     key_end = 1;
                     key = 1;
                     begin = '1';
@@ -204,7 +204,7 @@ int main(void)
                     printf("lets play again !!!\n");
                     goto there;
                     break;
-                case 0:
+                case '0':
                     key_end = 1;
                     key = 0;
                     again = 0;
