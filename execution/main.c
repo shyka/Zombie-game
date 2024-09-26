@@ -100,20 +100,23 @@ int content(void)
         if (key == 1) // key為遊戲結束控制字元
         {
             int cmp = strcmp(gamerin, line_3); // 比較字串相同性
-            if (cmp > 0)                       // str1 > str2
+            if (cmp > 0) // str1 > str2
             {
-                printf("faulse\n");
                 heart -= 1; // 對應錯誤會扣血
+                printf("faulse, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
             }
             else if (cmp == 0) // str1 = str2
             {
                 score += 1; // 成功則加分
-                printf("success, %-5d\n", score);
+                printf("success, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
             }
             else if (cmp < 0) // str1 < str2
             {
-                printf("faulse\n");
                 heart -= 1;
+                printf("faulse, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
             }
             // 下移程序
             strcpy(mid, line_2); // 將line2值賦予mid，strcpy
