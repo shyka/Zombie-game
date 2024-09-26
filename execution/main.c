@@ -10,7 +10,7 @@ void clearScreen()
     system("cls");
 }
 
-int content(void)
+int easy_mode(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
     int num1, num2, num3, score = 0, heart = 3;
@@ -176,7 +176,7 @@ int main(void)
         switch (begin)
         {
         case '1': //確定遊玩
-            content();
+            easy_mode();
             again = 1;
             key_end = 0;
             break;
