@@ -1,3 +1,15 @@
-this is a zombie-shooting game with typing in C language  
+zombie-shooting game  
+===
+language : C  
+---
 file name : zombie.test.c  
-git clone https:/github.com/liaojason2/vscode_template_for_Mac.git  
+
+
+目前進度（代辦事項）    
+---
+>- [x] 基礎程式大綱（60分版）  
+>- [ ] degbug測試    
+>- [ ] word    
+>- [ ] ppt    
+>- [ ] HP顯示    
+>- [ ] 增添和優化遊戲程式    

@@ -158,11 +158,13 @@ int content(void)
     }
     return 0;
 }
-int main(void)
+
+//遊玩詢問主程式
+int main(void) 
 {
-    char begin = '1', key_type = '1';
+    char begin = '1', key_type = '1'; //為輸入型字元，用來判斷遊玩的執行與否
     int key = 1, key_end = 0, again = 0;
-    while (key == 1)
+    while (key == 1) //開頭歡迎遊玩介面
     {
 
         printf("welcome to the game of shooting Zombies\n");
@@ -173,23 +175,23 @@ int main(void)
     there:
         switch (begin)
         {
-        case '1':
+        case '1': //確定遊玩
             content();
             again = 1;
             key_end = 0;
             break;
-        case '0':
+        case '0': //退出
             printf("thank you for playing\n");
             again = 0;
             key = 0;
             break;
-        default:
+        default: //防呆設定
             printf("please enter again, you enter wrong code\n");
             goto here;
             break;
         }
 
-        while (again == 1)
+        while (again == 1) //第一次結束遊玩後，再次詢問是否要重新遊玩
         {
             printf("if you want to play again, please enter 1, if not enter 0\n");
             while (key_end == 0)
@@ -198,23 +200,23 @@ int main(void)
                 switch (key_type)
                 {
                 // 優化程式
-                case '1':
+                case '1': //確認遊玩
                     key_end = 1;
                     key = 1;
                     begin = '1';
                     again = 0;
                     clearScreen();
                     printf("lets play again !!!\n");
-                    goto there;
+                    goto there; //再次執行遊玩程式
                     break;
-                case '0':
+                case '0': //退出
                     key_end = 1;
                     key = 0;
                     again = 0;
                     clearScreen();
                     printf("thank you for playing\n");
                     break;
-                default:
+                default: //防呆設定
                     clearScreen();
                     printf("please enter again,you enter wrong code\n");
                     key_end = 0;
