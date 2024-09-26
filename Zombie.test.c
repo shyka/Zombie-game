@@ -100,20 +100,23 @@ int content(void)
         if (key == 1) // key為遊戲結束控制字元
         {
             int cmp = strcmp(gamerin, line_3); // 比較字串相同性
-            if (cmp > 0)                       // str1 > str2
+            if (cmp > 0) // str1 > str2
             {
-                printf("faulse\n");
                 heart -= 1; // 對應錯誤會扣血
+                printf("faulse, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
             }
             else if (cmp == 0) // str1 = str2
             {
                 score += 1; // 成功則加分
-                printf("success, %-5d\n", score);
+                printf("success, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
             }
             else if (cmp < 0) // str1 < str2
             {
-                printf("faulse\n");
                 heart -= 1;
+                printf("faulse, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
             }
             // 下移程序
             strcpy(mid, line_2); // 將line2值賦予mid，strcpy
@@ -155,13 +158,11 @@ int content(void)
     }
     return 0;
 }
-
-//遊玩詢問主程式
-int main(void) 
+int main(void)
 {
-    char begin = '1', key_type = '1'; //為輸入型字元，用來判斷遊玩的執行與否
+    char begin = '1', key_type = '1';
     int key = 1, key_end = 0, again = 0;
-    while (key == 1) //開頭歡迎遊玩介面
+    while (key == 1)
     {
 
         printf("welcome to the game of shooting Zombies\n");
@@ -172,23 +173,23 @@ int main(void)
     there:
         switch (begin)
         {
-        case '1': //確定遊玩
+        case '1':
             content();
             again = 1;
             key_end = 0;
             break;
-        case '0': //退出
+        case '0':
             printf("thank you for playing\n");
             again = 0;
             key = 0;
             break;
-        default: //防呆設定
+        default:
             printf("please enter again, you enter wrong code\n");
             goto here;
             break;
         }
 
-        while (again == 1) //第一次結束遊玩後，再次詢問是否要重新遊玩
+        while (again == 1)
         {
             printf("if you want to play again, please enter 1, if not enter 0\n");
             while (key_end == 0)
@@ -197,23 +198,23 @@ int main(void)
                 switch (key_type)
                 {
                 // 優化程式
-                case '1': //確認遊玩
+                case '1':
                     key_end = 1;
                     key = 1;
                     begin = '1';
                     again = 0;
                     clearScreen();
                     printf("lets play again !!!\n");
-                    goto there; //再次執行遊玩程式
+                    goto there;
                     break;
-                case '0': //退出
+                case '0':
                     key_end = 1;
                     key = 0;
                     again = 0;
                     clearScreen();
                     printf("thank you for playing\n");
                     break;
-                default: //防呆設定
+                default:
                     clearScreen();
                     printf("please enter again,you enter wrong code\n");
                     key_end = 0;
