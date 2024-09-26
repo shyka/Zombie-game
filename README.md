@@ -1,3 +1,5 @@
-this is a zombie-shooting game with typing in C language  
+zombie-shooting game  
 ===
+language : C  
+---
 file name : zombie.test.c  
