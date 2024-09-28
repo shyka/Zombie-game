@@ -3,12 +3,6 @@
 #include <time.h>
 #include <string.h>
 
-//定義簡單模式所有的殭屍對應列表(zombie_spawn_tablet)
-char str_EZ_array[4][4] = 
-{{"100"}, 
- {"010"}, 
- {"001"}};
-
 //定義困難模式所有的殭屍對應列表(zombie_spawn_tablet)
 char str_HD_array[11][6] = 
 {{"10000"}, 
@@ -22,7 +16,13 @@ char str_HD_array[11][6] =
  {"000?0"},
  {"0000?"}};
 
-void clearScreen()
+//定義簡單模式所有的殭屍對應列表(zombie_spawn_tablet)
+char str_EZ_array[4][4] = 
+{{"100"}, 
+ {"010"}, 
+ {"001"}};
+
+ void clearScreen()
 {
 
     system("cls");
@@ -134,15 +134,19 @@ int main(void)
     {
 
         printf("welcome to the game of shooting Zombies\n");
-        printf("if you want to start the game, please enter 1, if not enter 0\n");
+    there:
+        printf("if you want to start the game, please enter 1 to play easy mode, enter 2 to play hard mode, if not enter 0\n");
     here: // 優化程式
         scanf(" %c", &begin);
         clearScreen();
-    there:
         switch (begin)
         {
         case '1': //確定遊玩
             easy_mode();
+            again = 1;
+            key_end = 0;
+            break;
+        case '2': //確定遊玩
             again = 1;
             key_end = 0;
             break;
