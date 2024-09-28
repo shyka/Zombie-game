@@ -4,22 +4,17 @@
 #include <string.h>
 
 //定義所有的殭屍對應列表(zombie_spawn_tablet)
-char str_array[16][6] = 
+char str_array[11][6] = 
 {{"10000"}, 
  {"01000"}, 
  {"00100"}, 
  {"00010"}, 
- {"00001"}, 
- {"11000"}, 
- {"10100"}, 
- {"10010"}, 
- {"10001"}, 
- {"01100"}, 
- {"01010"}, 
- {"01001"}, 
- {"00110"}, 
- {"00101"}, 
- {"00011"}}; 
+ {"00001"},
+ {"?0000"},
+ {"0?000"},
+ {"00?00"},
+ {"000?0"},
+ {"0000?"}}; 
 
  void clearScreen()
 {
@@ -30,25 +25,14 @@ char str_array[16][6] =
 int main(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
-    int num_15 , score = 0, heart = 3; // num對應每一行殭屍，score為分數，HEART為血量
-    char line[5][6], gamerin[6], gamernum; // line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamernum為使用者輸入
-     
-     //列舉輸入字串整數識別碼（小寫）
-    enum available_type_table 
-    {
-        a,s,d,f,g,
-        as,sa,ad,da,af,fa,ag,ga,
-        sd,ds,sf,fs,sg,gs,
-        df,fd,dg,gd,
-        fg,gf,
-        ESC
-    };
+    int num_hardmode , score = 0, heart = 3; // num對應每一行殭屍，score為分數，HEART為血量
+    char line[5][6], gamerin[6], gamerchar; // line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamerchar為使用者輸入字元，gamernum則是對應的ascii數字
     
     // 隨機生成四行殭屍(並儲存到指定變數中)
     for(int i = 0; i < 4; i++)
     {
-        num_15 = rand() % 15; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(1-15)
-        sscanf(str_array[num_15], "%5s", line[i]); 
+        num_hardmode = rand() % 10; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(0~9)
+        sscanf(str_array[num_hardmode], "%5s", line[i]); 
     }
     
     // 輸出遊戲基礎四隨機殭屍
@@ -60,81 +44,50 @@ int main(void)
     int key_all = 1, key = 1;// key_all為總遊戲控制循環，key_begin為使用者輸入的保險絲
     while (key_all == 1)
     {
-        gets(&gamernum);
-        enum available_type_table type_num = gamernum;
-        switch (type_num)
+        scanf(" %c", &gamerchar);
+        switch (gamerchar)
         {
-        case a: // 對應打殭屍種類
+        case '1': // 對應打殭屍種類
             strcpy(gamerin, str_array[0]);
             clearScreen();
             break;
-        case s:
+        case '2':
             strcpy(gamerin, str_array[1]);
             clearScreen();
             break;
-        case d:
+        case '3':
             strcpy(gamerin, str_array[2]);
             clearScreen();
             break;
-        case f:
+        case '4':
             strcpy(gamerin, str_array[3]);
             clearScreen();
             break;
-        case g:
+        case '5':
             strcpy(gamerin, str_array[4]);
             clearScreen();
             break;
-        case as:
-        case sa:
+        case 'a':
             strcpy(gamerin, str_array[5]);
             clearScreen();
             break;
-        case ad:
-        case da:
+        case 's':
             strcpy(gamerin, str_array[6]);
             clearScreen();
             break;
-        case af:
-        case fa:
+        case 'd':
             strcpy(gamerin, str_array[7]);
             clearScreen();
             break;
-        case ag:
-        case ga:
+        case 'f':
             strcpy(gamerin, str_array[8]);
             clearScreen();
             break;
-        case sd:
-        case ds:
+        case 'g':
             strcpy(gamerin, str_array[9]);
             clearScreen();
             break;
-        case sf:
-        case fs:
-            strcpy(gamerin, str_array[10]);
-            clearScreen();
-            break;
-        case sg:
-        case gs:
-            strcpy(gamerin, str_array[11]);
-            clearScreen();
-            break;
-        case df:
-        case fd:
-            strcpy(gamerin, str_array[12]);
-            clearScreen();
-            break;
-        case dg:
-        case gd:
-            strcpy(gamerin, str_array[13]);
-            clearScreen();
-            break;
-        case fg:
-        case gf:
-            strcpy(gamerin, str_array[14]);
-            clearScreen();
-            break;
-        case ESC: //跳脫遊戲
+        case '0': //跳脫遊戲(esc鍵)
             key = 0;
             clearScreen();
             break;
@@ -171,8 +124,8 @@ int main(void)
             }
             if (heart > 0) // 血量判斷
             {
-                num_15 = rand() % 15;
-                sscanf(str_array[num_15], "%5s", line[0]); //重新生成line[0]
+                num_hardmode = rand() % 10;
+                sscanf(str_array[num_hardmode], "%5s", line[0]); //重新生成line[0]
                 printf("%s\n", line[0]);
                 printf("%s\n", line[1]);
                 printf("%s\n", line[2]);
