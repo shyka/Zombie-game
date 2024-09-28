@@ -3,6 +3,12 @@
 #include <time.h>
 #include <string.h>
 
+//定義簡單模式所有的殭屍對應列表(zombie_spawn_tablet)
+char str_EZ_array[4][4] = 
+{{"100"}, 
+ {"010"}, 
+ {"001"}};
+
 //定義困難模式所有的殭屍對應列表(zombie_spawn_tablet)
 char str_HD_array[11][6] = 
 {{"10000"}, 
@@ -25,20 +31,20 @@ void clearScreen()
 int easy_mode(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
-    int num_EZ score = 0, heart = 3; // num對應每一行殭屍，score為分數，HEART為血量
+    int num_EZ ,score = 0, heart = 3; // num對應每一行殭屍，score為分數，HEART為血量
     char line[4][4], gamerin[4], gamernum; //line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamernum為使用者輸入
-    for(int i = 0; i < 4; i++)
+    
+    // 隨機生成三行殭屍(並儲存到指定變數中)
+    for(int i = 0; i < 3; i++)
     {
-        num_EZ = rand() % 10; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(0~9)
+        num_EZ = rand() % 3; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(0~2)
         sscanf(str_EZ_array[num_EZ], "%5s", line[i]); 
     }
-    // 隨機生成三行殭屍(並儲存到指定變數中)
-    // 輸出遊戲基礎三隨機殭屍
-    printf("%s\n", line_1);
-    printf("%s\n", line_2);
-    printf("%s\n", line_3);
-    int key_all = 1, key = 1;
-    // key_all為總遊戲控制循環，key_begin為使用者輸入的保險絲
+    printf("%s\n", line[0]);
+    printf("%s\n", line[1]);
+    printf("%s\n", line[2]);
+
+    int key_all = 1, key = 1;// key_all為總遊戲控制循環，key_begin為使用者輸入的保險絲
     while (key_all == 1)
     {
         scanf(" %c", &gamernum);
@@ -46,21 +52,20 @@ int easy_mode(void)
         {
         case 'A':
         case 'a': // 對應打殭屍種類
-            strcpy(gamerin, str1);
+            strcpy(gamerin, line[1]);
             clearScreen();
             break;
         case 'S':
         case 's':
-            strcpy(gamerin, str2);
+            strcpy(gamerin, line[2]);
             clearScreen();
             break;
         case 'D':
         case 'd':
-            strcpy(gamerin, str3);
+            strcpy(gamerin, line[3]);
             clearScreen();
             break;
-        case 'F':
-        case 'f': // 跳脫遊戲
+        case '0': // 跳脫遊戲
             key = 0;
             clearScreen();
             break;
@@ -71,7 +76,7 @@ int easy_mode(void)
 
         if (key == 1) // key為遊戲結束控制字元
         {
-            int cmp = strcmp(gamerin, line_3); // 比較字串相同性
+            int cmp = strcmp(gamerin, line[2]); // 比較字串相同性
             if (cmp > 0) // str1 > str2
             {
                 heart -= 1; // 對應錯誤會扣血
@@ -91,28 +96,17 @@ int easy_mode(void)
                 printf("  HP: %d\n", heart);
             }
             // 下移程序
-            strcpy(mid, line_2); // 將line2值賦予mid，strcpy
-            strcpy(line_2, line_1);
-            strcpy(line_3, mid);
-            num3 = rand() % 3 + 1;
+            for(int zcount_line = 3; zcount_line > 0; zcount_line--)
+            {
+                strcpy(line[zcount_line], line[zcount_line-1]); //將上一行數字傳給下一行
+            }
             if (heart > 0) // 血量判斷
             {
-
-                switch (num3) // 打完後，將1，2行下移成為2，3行，並新增隨機第1行
-                {
-                case 1:
-                    sscanf(str1, "%s", line_1);
-                    break;
-                case 2:
-                    sscanf(str2, "%s", line_1);
-                    break;
-                case 3:
-                    sscanf(str3, "%s", line_1);
-                    break;
-                }
-                printf("%s\n", line_1);
-                printf("%s\n", line_2);
-                printf("%s\n", line_3);
+                num_EZ = rand() % 3;
+                sscanf(str_EZ_array[num_EZ], "%5s", line[0]); //重新生成line[0]
+                printf("%s\n", line[1]);
+                printf("%s\n", line[2]);
+                printf("%s\n", line[3]);
             }
             else // 輸，遊戲結束
             {
