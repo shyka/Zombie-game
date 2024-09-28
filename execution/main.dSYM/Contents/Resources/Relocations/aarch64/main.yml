@@ -2,10 +2,10 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/guxiaoxiang/Zombie-game/execution/main'
 relocations:
-  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _clearScreen, symObjAddr: 0x0, symBinAddr: 0x1000035C4, symSize: 0x1C }
-  - { offset: 0x3F, size: 0x8, addend: 0x0, symName: _str_EZ_array, symObjAddr: 0x7DC, symBinAddr: 0x100008000, symSize: 0x0 }
-  - { offset: 0x74, size: 0x8, addend: 0x0, symName: _str_HD_array, symObjAddr: 0x7EC, symBinAddr: 0x100008010, symSize: 0x0 }
-  - { offset: 0x9B, size: 0x8, addend: 0x0, symName: _clearScreen, symObjAddr: 0x0, symBinAddr: 0x1000035C4, symSize: 0x1C }
-  - { offset: 0xB0, size: 0x8, addend: 0x0, symName: _easy_mode, symObjAddr: 0x1C, symBinAddr: 0x1000035E0, symSize: 0x4C4 }
-  - { offset: 0x18E, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x5F0, symBinAddr: 0x100003BB4, symSize: 0x1EC }
+  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _clearScreen, symObjAddr: 0x0, symBinAddr: 0x1000035C0, symSize: 0x1C }
+  - { offset: 0x3F, size: 0x8, addend: 0x0, symName: _str_EZ_array, symObjAddr: 0x7E0, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offset: 0x74, size: 0x8, addend: 0x0, symName: _str_HD_array, symObjAddr: 0x7F0, symBinAddr: 0x100008010, symSize: 0x0 }
+  - { offset: 0x9B, size: 0x8, addend: 0x0, symName: _clearScreen, symObjAddr: 0x0, symBinAddr: 0x1000035C0, symSize: 0x1C }
+  - { offset: 0xB0, size: 0x8, addend: 0x0, symName: _easy_mode, symObjAddr: 0x1C, symBinAddr: 0x1000035DC, symSize: 0x4C8 }
+  - { offset: 0x18E, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x5F4, symBinAddr: 0x100003BB4, symSize: 0x1EC }
 ...

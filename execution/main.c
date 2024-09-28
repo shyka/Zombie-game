@@ -38,7 +38,7 @@ int easy_mode(void)
     for(int i = 0; i < 3; i++)
     {
         num_EZ = rand() % 3; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(0~2)
-        sscanf(str_EZ_array[num_EZ], "%5s", line[i]); 
+        sscanf(str_EZ_array[num_EZ], "%3s", line[i]); 
     }
     printf("%s\n", line[0]);
     printf("%s\n", line[1]);
@@ -52,17 +52,17 @@ int easy_mode(void)
         {
         case 'A':
         case 'a': // 對應打殭屍種類
-            strcpy(gamerin, line[1]);
+            strcpy(gamerin, str_EZ_array[0]);
             clearScreen();
             break;
         case 'S':
         case 's':
-            strcpy(gamerin, line[2]);
+            strcpy(gamerin, str_EZ_array[1]);
             clearScreen();
             break;
         case 'D':
         case 'd':
-            strcpy(gamerin, line[3]);
+            strcpy(gamerin, str_EZ_array[2]);
             clearScreen();
             break;
         case '0': // 跳脫遊戲
@@ -96,17 +96,17 @@ int easy_mode(void)
                 printf("  HP: %d\n", heart);
             }
             // 下移程序
-            for(int zcount_line = 3; zcount_line > 0; zcount_line--)
+            for(int zcount_line = 2; zcount_line > 0; zcount_line--)
             {
                 strcpy(line[zcount_line], line[zcount_line-1]); //將上一行數字傳給下一行
             }
             if (heart > 0) // 血量判斷
             {
                 num_EZ = rand() % 3;
-                sscanf(str_EZ_array[num_EZ], "%5s", line[0]); //重新生成line[0]
+                sscanf(str_EZ_array[num_EZ], "%3s", line[0]); //重新生成line[0]
+                printf("%s\n", line[0]);
                 printf("%s\n", line[1]);
                 printf("%s\n", line[2]);
-                printf("%s\n", line[3]);
             }
             else // 輸，遊戲結束
             {
