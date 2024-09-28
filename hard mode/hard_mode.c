@@ -3,38 +3,194 @@
 #include <time.h>
 #include <string.h>
 
-char str_array[16][6] = {{"10000"}, 
-                         {"01000"}, 
-                         {"00100"}, 
-                         {"00010"}, 
-                         {"00001"}, 
-                         {"11000"}, 
-                         {"10100"}, 
-                         {"10010"}, 
-                         {"10001"}, 
-                         {"01100"}, 
-                         {"01010"}, 
-                         {"01001"}, 
-                         {"00110"}, 
-                         {"00101"}, 
-                         {"00011"}}; //定義所有的殭屍對應列表(zombie_spawn_tablet)
+//定義所有的殭屍對應列表(zombie_spawn_tablet)
+char str_array[16][6] = 
+{{"10000"}, 
+ {"01000"}, 
+ {"00100"}, 
+ {"00010"}, 
+ {"00001"}, 
+ {"11000"}, 
+ {"10100"}, 
+ {"10010"}, 
+ {"10001"}, 
+ {"01100"}, 
+ {"01010"}, 
+ {"01001"}, 
+ {"00110"}, 
+ {"00101"}, 
+ {"00011"}}; 
+
+ void clearScreen()
+{
+
+    system("cls");
+}
 
 int main(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
-    int num_15 , score = 0, heart = 3;
-    // num對應每一行殭屍，score為分數，HEART為血量
-    char line[5][6], gamerin[6], gamernum, mid[6];
-    // line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamernum為使用者輸入，mid為暫存值
-    // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們 想指定的範圍(1-15)
-    for(int i=1; i<=4; i++)
+    int num_15 , score = 0, heart = 3; // num對應每一行殭屍，score為分數，HEART為血量
+    char line[5][6], gamerin[6], gamernum; // line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamernum為使用者輸入
+     
+     //列舉輸入字串整數識別碼（小寫）
+    enum available_type_table 
     {
-        num_15 = rand() % 15;
-        sscanf(str_array[num_15], "%5s", line[i-1]);
+        a,s,d,f,g,
+        as,sa,ad,da,af,fa,ag,ga,
+        sd,ds,sf,fs,sg,gs,
+        df,fd,dg,gd,
+        fg,gf,
+        ESC
+    };
+    
+    // 隨機生成四行殭屍(並儲存到指定變數中)
+    for(int i = 0; i < 4; i++)
+    {
+        num_15 = rand() % 15; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(1-15)
+        sscanf(str_array[num_15], "%5s", line[i]); 
     }
     
-    // 輸出遊戲基礎三隨機殭屍
+    // 輸出遊戲基礎四隨機殭屍
     printf("%s\n", line[0]);
     printf("%s\n", line[1]);
     printf("%s\n", line[2]);
+    printf("%s\n", line[3]);
+    
+    int key_all = 1, key = 1;// key_all為總遊戲控制循環，key_begin為使用者輸入的保險絲
+    while (key_all == 1)
+    {
+        gets(&gamernum);
+        enum available_type_table type_num = gamernum;
+        switch (type_num)
+        {
+        case a: // 對應打殭屍種類
+            strcpy(gamerin, str_array[0]);
+            clearScreen();
+            break;
+        case s:
+            strcpy(gamerin, str_array[1]);
+            clearScreen();
+            break;
+        case d:
+            strcpy(gamerin, str_array[2]);
+            clearScreen();
+            break;
+        case f:
+            strcpy(gamerin, str_array[3]);
+            clearScreen();
+            break;
+        case g:
+            strcpy(gamerin, str_array[4]);
+            clearScreen();
+            break;
+        case as:
+        case sa:
+            strcpy(gamerin, str_array[5]);
+            clearScreen();
+            break;
+        case ad:
+        case da:
+            strcpy(gamerin, str_array[6]);
+            clearScreen();
+            break;
+        case af:
+        case fa:
+            strcpy(gamerin, str_array[7]);
+            clearScreen();
+            break;
+        case ag:
+        case ga:
+            strcpy(gamerin, str_array[8]);
+            clearScreen();
+            break;
+        case sd:
+        case ds:
+            strcpy(gamerin, str_array[9]);
+            clearScreen();
+            break;
+        case sf:
+        case fs:
+            strcpy(gamerin, str_array[10]);
+            clearScreen();
+            break;
+        case sg:
+        case gs:
+            strcpy(gamerin, str_array[11]);
+            clearScreen();
+            break;
+        case df:
+        case fd:
+            strcpy(gamerin, str_array[12]);
+            clearScreen();
+            break;
+        case dg:
+        case gd:
+            strcpy(gamerin, str_array[13]);
+            clearScreen();
+            break;
+        case fg:
+        case gf:
+            strcpy(gamerin, str_array[14]);
+            clearScreen();
+            break;
+        case ESC: //跳脫遊戲
+            key = 0;
+            clearScreen();
+            break;
+        default: // 防呆機制
+            printf("please enter again,you enter wrong code\n");
+            continue; // 優化程式
+        }
+
+        if (key == 1) // key為遊戲結束控制字元
+        {
+            int cmp = strcmp(gamerin, line[3]); // 比較第四行字串相同性
+            if (cmp > 0) // str1 > str2
+            {
+                heart -= 1; // 對應錯誤會扣血
+                printf("faulse, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
+            }
+            else if (cmp == 0) // str1 = str2
+            {
+                score += 1; // 成功則加分
+                printf("success, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
+            }
+            else if (cmp < 0) // str1 < str2
+            {
+                heart -= 1;
+                printf("faulse, \t\t\tscore: %d", score);
+                printf("  HP: %d\n", heart);
+            }
+            // 下移程序
+            for(int zcount_line = 3; zcount_line > 0; zcount_line--)
+            {
+                strcpy(line[zcount_line], line[zcount_line-1]); //將上一行數字傳給下一行
+            }
+            if (heart > 0) // 血量判斷
+            {
+                num_15 = rand() % 15;
+                sscanf(str_array[num_15], "%5s", line[0]); //重新生成line[0]
+                printf("%s\n", line[0]);
+                printf("%s\n", line[1]);
+                printf("%s\n", line[2]);
+                printf("%s\n", line[3]);
+            }
+            else // 輸，遊戲結束
+            {
+                printf("game is ended\n");
+                printf("your score = %d\n", score);
+                key_all = 0;
+            }
+        }
+        else // 遊戲結束
+        {
+            printf("game is ended\n");
+            printf("your score = %d\n", score);
+            key_all = 0;
+        }
+    }
+    return 0;
 }
