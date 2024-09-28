@@ -3,7 +3,19 @@
 #include <time.h>
 #include <string.h>
 
-char str1[4] = "100", str2[4] = "010", str3[4] = "001", line_1[4], line_2[4], line_3[4];
+//定義困難模式所有的殭屍對應列表(zombie_spawn_tablet)
+char str_HD_array[11][6] = 
+{{"10000"}, 
+ {"01000"}, 
+ {"00100"}, 
+ {"00010"}, 
+ {"00001"},
+ {"?0000"},
+ {"0?000"},
+ {"00?00"},
+ {"000?0"},
+ {"0000?"}};
+
 void clearScreen()
 {
 
@@ -13,54 +25,14 @@ void clearScreen()
 int easy_mode(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
-    int num1, num2, num3, score = 0, heart = 3;
-    // num對應每一行殭屍，score為分數，HEART為血量
-    char str1[4] = "100", str2[4] = "010", str3[4] = "001", line_1[4], line_2[4], line_3[4], gamerin[4], gamernum, mid[4];
-    // str為枚舉殭屍種類，line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamernum為使用者輸入，mid為暫存值
-    // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們 想指定的範圍(1-3)
-    num1 = rand() % 3 + 1;
-    num2 = rand() % 3 + 1;
-    num3 = rand() % 3 + 1;
+    int num_EZ score = 0, heart = 3; // num對應每一行殭屍，score為分數，HEART為血量
+    char line[4][4], gamerin[4], gamernum; //line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamernum為使用者輸入
+    for(int i = 0; i < 4; i++)
+    {
+        num_EZ = rand() % 10; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(0~9)
+        sscanf(str_EZ_array[num_EZ], "%5s", line[i]); 
+    }
     // 隨機生成三行殭屍(並儲存到指定變數中)
-    // 第一行
-    switch (num1)
-    {
-    case 1:
-        sscanf(str1, "%s", line_1); // 讀取str1值，給line1
-        break;
-    case 2:
-        sscanf(str2, "%s", line_1);
-        break;
-    case 3:
-        sscanf(str3, "%s", line_1);
-        break;
-    }
-    // 第二行
-    switch (num2)
-    {
-    case 1:
-        sscanf(str1, "%s", line_2);
-        break;
-    case 2:
-        sscanf(str2, "%s", line_2);
-        break;
-    case 3:
-        sscanf(str3, "%s", line_2);
-        break;
-    }
-    // 第三行
-    switch (num3)
-    {
-    case 1:
-        sscanf(str1, "%s", line_3);
-        break;
-    case 2:
-        sscanf(str2, "%s", line_3);
-        break;
-    case 3:
-        sscanf(str3, "%s", line_3);
-        break;
-    }
     // 輸出遊戲基礎三隨機殭屍
     printf("%s\n", line_1);
     printf("%s\n", line_2);
