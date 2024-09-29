@@ -6,7 +6,7 @@
 #include "easymode.h"
 #include "hardmode.h"
 
-//遊玩詢問主程式
+//遊玩主程式
 int main(void) 
 {
     char begin = '1', key_type = '1'; //為輸入型字元，用來判斷遊玩的執行與否
