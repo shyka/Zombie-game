@@ -5,18 +5,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include "clearscreen.h"
 
 //定義簡單模式所有的殭屍對應列表(zombie_spawn_tablet)
 char str_EZ_array[4][4] = 
 {{"100"}, 
  {"010"}, 
  {"001"}};
-
- void clearScreen()
-{
-
-    system("cls");
-}
 
 int easy_mode(void)
 {

@@ -2,23 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include "clearscreen.h"
 #include "easymode.h"
-
-//定義困難模式所有的殭屍對應列表(zombie_spawn_tablet)
-char str_HD_array[11][6] = 
-{{"10000"}, 
- {"01000"}, 
- {"00100"}, 
- {"00010"}, 
- {"00001"},
- {"?0000"},
- {"0?000"},
- {"00?00"},
- {"000?0"},
- {"0000?"}};
+#include "hardmode.h"
 
 //遊玩詢問主程式
-int main(void) 
+int hard_mode(void) 
 {
     char begin = '1', key_type = '1'; //為輸入型字元，用來判斷遊玩的執行與否
     int key = 1, key_end = 0, again = 0;
