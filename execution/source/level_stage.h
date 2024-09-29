@@ -94,6 +94,7 @@ char str_HD_ST1[11][6] =
  {"i|%?~"},
  {"|~i+?"}}; 
 
+
 void LV_stage_change(int mode, int level)
 {
     switch(mode)
