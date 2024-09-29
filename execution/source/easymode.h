@@ -25,9 +25,9 @@ int easy_mode(void)
         num_EZ = rand() % 3; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(0~2)
         sscanf(str_EZ_array[num_EZ], "%3s", line[i]); 
     }
-    printf("%s\n", line[0]);
-    printf("%s\n", line[1]);
-    printf("%s\n", line[2]);
+    printf("\t%s\n", line[0]);
+    printf("\t%s\n", line[1]);
+    printf("\t%s\n      >>\n", line[2]);
 
     int key_all = 1, key = 1;// key_all為總遊戲控制循環，key_begin為使用者輸入的保險絲
     while (key_all == 1)
@@ -35,18 +35,15 @@ int easy_mode(void)
         scanf(" %c", &gamernum);
         switch (gamernum)
         {
-        case 'A':
-        case 'a': // 對應打殭屍種類
+        case '1': // 對應打殭屍種類
             strcpy(gamerin, str_EZ_array[0]);
             clearScreen();
             break;
-        case 'S':
-        case 's':
+        case '2':
             strcpy(gamerin, str_EZ_array[1]);
             clearScreen();
             break;
-        case 'D':
-        case 'd':
+        case '3':
             strcpy(gamerin, str_EZ_array[2]);
             clearScreen();
             break;
@@ -66,19 +63,19 @@ int easy_mode(void)
             {
                 heart -= 1; // 對應錯誤會扣血
                 printf("faulse, \t\t\tscore: %d", score);
-                printf("  HP: %d\n", heart);
+                printf("  HP: %d\n\n", heart);
             }
             else if (cmp == 0) // str1 = str2
             {
                 score += 1; // 成功則加分
                 printf("success, \t\t\tscore: %d", score);
-                printf("  HP: %d\n", heart);
+                printf("  HP: %d\n\n", heart);
             }
             else if (cmp < 0) // str1 < str2
             {
                 heart -= 1;
                 printf("faulse, \t\t\tscore: %d", score);
-                printf("  HP: %d\n", heart);
+                printf("  HP: %d\n\n", heart);
             }
             // 下移程序
             for(int zcount_line = 2; zcount_line > 0; zcount_line--)
@@ -89,9 +86,9 @@ int easy_mode(void)
             {
                 num_EZ = rand() % 3;
                 sscanf(str_EZ_array[num_EZ], "%3s", line[0]); //重新生成line[0]
-                printf("%s\n", line[0]);
-                printf("%s\n", line[1]);
-                printf("%s\n", line[2]);
+                printf("\t%s\n", line[0]);
+                printf("\t%s\n", line[1]);
+                printf("\t%s\n      >>\n", line[2]);
             }
             else // 輸，遊戲結束
             {
