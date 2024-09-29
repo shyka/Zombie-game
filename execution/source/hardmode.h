@@ -32,12 +32,12 @@ int hard_mode(void)
         num_hardmode = rand() % 10; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(0~9)
         sscanf(str_array[num_hardmode], "%5s", line[i]); 
     }
-    
+
     // 輸出遊戲基礎四隨機殭屍
-    printf("%s\n", line[0]);
-    printf("%s\n", line[1]);
-    printf("%s\n", line[2]);
-    printf("%s\n", line[3]);
+    printf("\t%s\n", line[0]);
+    printf("\t%s\n", line[1]);
+    printf("\t%s\n", line[2]);
+    printf("\t%s\n      >>\n", line[3]);
     
     int key_all = 1, key = 1;// key_all為總遊戲控制循環，key_begin為使用者輸入的保險絲
     while (key_all == 1)
@@ -101,19 +101,19 @@ int hard_mode(void)
             {
                 heart -= 1; // 對應錯誤會扣血
                 printf("faulse, \t\t\tscore: %d", score);
-                printf("  HP: %d\n", heart);
+                printf("  HP: %d\n\n", heart);
             }
             else if (cmp == 0) // str1 = str2
             {
                 score += 1; // 成功則加分
                 printf("success, \t\t\tscore: %d", score);
-                printf("  HP: %d\n", heart);
+                printf("  HP: %d\n\n", heart);
             }
             else if (cmp < 0) // str1 < str2
             {
                 heart -= 1;
                 printf("faulse, \t\t\tscore: %d", score);
-                printf("  HP: %d\n", heart);
+                printf("  HP: %d\n\n", heart);
             }
             // 下移程序
             for(int zcount_line = 3; zcount_line > 0; zcount_line--)
@@ -124,10 +124,10 @@ int hard_mode(void)
             {
                 num_hardmode = rand() % 10;
                 sscanf(str_array[num_hardmode], "%5s", line[0]); //重新生成line[0]
-                printf("%s\n", line[0]);
-                printf("%s\n", line[1]);
-                printf("%s\n", line[2]);
-                printf("%s\n", line[3]);
+                printf("\t%s\n", line[0]);
+                printf("\t%s\n", line[1]);
+                printf("\t%s\n", line[2]);
+                printf("\t%s\n      >>\n", line[3]);
             }
             else // 輸，遊戲結束
             {
