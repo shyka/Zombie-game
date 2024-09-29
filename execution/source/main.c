@@ -22,12 +22,12 @@ int main(void)
         clearScreen();
         switch (begin)
         {
-        case '1': //確定遊玩
+        case '1': //確定遊玩(簡單模式)
             easy_mode();
             again = 1;
             key_end = 0;
             break;
-        case '2': //確定遊玩
+        case '2': //確定遊玩(困難模式)
             hard_mode();
             again = 1;
             key_end = 0;
