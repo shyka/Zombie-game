@@ -7,7 +7,7 @@
 #include "hardmode.h"
 
 //遊玩詢問主程式
-int hard_mode(void) 
+int main(void) 
 {
     char begin = '1', key_type = '1'; //為輸入型字元，用來判斷遊玩的執行與否
     int key = 1, key_end = 0, again = 0;
@@ -28,6 +28,7 @@ int hard_mode(void)
             key_end = 0;
             break;
         case '2': //確定遊玩
+            hard_mode();
             again = 1;
             key_end = 0;
             break;

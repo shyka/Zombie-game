@@ -20,7 +20,7 @@ char str_array[11][6] =
  {"000?0"},
  {"0000?"}}; 
 
-int main(void)
+int hard_mode(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
     int num_hardmode , score = 0, heart = 3; // num對應每一行殭屍，score為分數，HEART為血量
