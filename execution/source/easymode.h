@@ -16,7 +16,7 @@ char str_EZ_array[4][4] =
 int easy_mode(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
-    int num_EZ ,score = 0, heart = 3; // num對應每一行殭屍，score為分數，HEART為血量
+    int num_EZ ,score = 0, heart = 3, exp = 0, level = 1; // num對應每一行殭屍，score為分數，HEART為血量，EXP為經驗值，level代表目前所在等級
     char line[4][4], gamerin[4], gamernum; //line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamernum為使用者輸入
     
     // 隨機生成三行殭屍(並儲存到指定變數中)
@@ -63,19 +63,26 @@ int easy_mode(void)
             {
                 heart -= 1; // 對應錯誤會扣血
                 printf("faulse, \t\t\tscore: %d", score);
-                printf("  HP: %d\n\n", heart);
+                printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
             }
             else if (cmp == 0) // str1 = str2
             {
                 score += 1; // 成功則加分
+                exp += 1; // 經驗值增加
                 printf("success, \t\t\tscore: %d", score);
-                printf("  HP: %d\n\n", heart);
+                printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
             }
             else if (cmp < 0) // str1 < str2
             {
                 heart -= 1;
                 printf("faulse, \t\t\tscore: %d", score);
-                printf("  HP: %d\n\n", heart);
+                printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
+            }
+            // 升級條件判斷
+            if(exp >= 100)
+            {
+                exp -= 100;
+                level += 1;
             }
             // 下移程序
             for(int zcount_line = 2; zcount_line > 0; zcount_line--)
