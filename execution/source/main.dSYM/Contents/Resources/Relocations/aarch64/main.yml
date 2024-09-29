@@ -2,21 +2,23 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/guxiaoxiang/Zombie-game/execution/source/main'
 relocations:
-  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _clearScreen, symObjAddr: 0x0, symBinAddr: 0x1000027A4, symSize: 0x1C }
-  - { offset: 0x59, size: 0x8, addend: 0x0, symName: _p, symObjAddr: 0x2DA8, symBinAddr: 0x100008138, symSize: 0x0 }
-  - { offset: 0x75, size: 0x8, addend: 0x0, symName: _str_EZ_ST1, symObjAddr: 0x1774, symBinAddr: 0x100008000, symSize: 0x0 }
-  - { offset: 0x9C, size: 0x8, addend: 0x0, symName: _str_EZ_ST2, symObjAddr: 0x1784, symBinAddr: 0x100008010, symSize: 0x0 }
-  - { offset: 0xB1, size: 0x8, addend: 0x0, symName: _str_EZ_ST3, symObjAddr: 0x1794, symBinAddr: 0x100008020, symSize: 0x0 }
-  - { offset: 0xC6, size: 0x8, addend: 0x0, symName: _str_HD_ST1, symObjAddr: 0x17A4, symBinAddr: 0x100008030, symSize: 0x0 }
-  - { offset: 0xED, size: 0x8, addend: 0x0, symName: _str_HD_ST2, symObjAddr: 0x17E6, symBinAddr: 0x100008072, symSize: 0x0 }
-  - { offset: 0x102, size: 0x8, addend: 0x0, symName: _str_HD_ST3, symObjAddr: 0x1828, symBinAddr: 0x1000080B4, symSize: 0x0 }
-  - { offset: 0x117, size: 0x8, addend: 0x0, symName: _str_HD_ST4, symObjAddr: 0x186A, symBinAddr: 0x1000080F6, symSize: 0x0 }
-  - { offset: 0x12C, size: 0x8, addend: 0x0, symName: _str_EZ_array, symBinAddr: 0x10000813C, symSize: 0x0 }
-  - { offset: 0x141, size: 0x8, addend: 0x0, symName: _str_HD_array, symBinAddr: 0x10000814C, symSize: 0x0 }
-  - { offset: 0x156, size: 0x8, addend: 0x0, symName: _str_array, symBinAddr: 0x10000818E, symSize: 0x0 }
-  - { offset: 0x15F, size: 0x8, addend: 0x0, symName: _clearScreen, symObjAddr: 0x0, symBinAddr: 0x1000027A4, symSize: 0x1C }
-  - { offset: 0x174, size: 0x8, addend: 0x0, symName: _LV_stage_change, symObjAddr: 0x1C, symBinAddr: 0x1000027C0, symSize: 0x3F0 }
-  - { offset: 0x1A6, size: 0x8, addend: 0x0, symName: _easy_mode, symObjAddr: 0x41C, symBinAddr: 0x100002BC0, symSize: 0x67C }
-  - { offset: 0x2CE, size: 0x8, addend: 0x0, symName: _hard_mode, symObjAddr: 0xAA8, symBinAddr: 0x10000324C, symSize: 0x7D0 }
-  - { offset: 0x3FA, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1388, symBinAddr: 0x100003B2C, symSize: 0x214 }
+  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _clearScreen, symObjAddr: 0x0, symBinAddr: 0x100002650, symSize: 0x1C }
+  - { offset: 0x59, size: 0x8, addend: 0x0, symName: _p, symObjAddr: 0x3034, symBinAddr: 0x100008168, symSize: 0x0 }
+  - { offset: 0x75, size: 0x8, addend: 0x0, symName: _str_EZ_ST1, symObjAddr: 0x18C8, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offset: 0x9C, size: 0x8, addend: 0x0, symName: _str_EZ_ST2, symObjAddr: 0x18D8, symBinAddr: 0x100008010, symSize: 0x0 }
+  - { offset: 0xB1, size: 0x8, addend: 0x0, symName: _str_EZ_ST3, symObjAddr: 0x18E8, symBinAddr: 0x100008020, symSize: 0x0 }
+  - { offset: 0xC6, size: 0x8, addend: 0x0, symName: _str_EZ_ST4, symObjAddr: 0x18F8, symBinAddr: 0x100008030, symSize: 0x0 }
+  - { offset: 0xDB, size: 0x8, addend: 0x0, symName: _str_EZ_ST5, symObjAddr: 0x1908, symBinAddr: 0x100008040, symSize: 0x0 }
+  - { offset: 0xF0, size: 0x8, addend: 0x0, symName: _str_EZ_ST6, symObjAddr: 0x1918, symBinAddr: 0x100008050, symSize: 0x0 }
+  - { offset: 0x105, size: 0x8, addend: 0x0, symName: _str_HD_ST1, symObjAddr: 0x1928, symBinAddr: 0x100008060, symSize: 0x0 }
+  - { offset: 0x12C, size: 0x8, addend: 0x0, symName: _str_HD_ST2, symObjAddr: 0x196A, symBinAddr: 0x1000080A2, symSize: 0x0 }
+  - { offset: 0x141, size: 0x8, addend: 0x0, symName: _str_HD_ST3, symObjAddr: 0x19AC, symBinAddr: 0x1000080E4, symSize: 0x0 }
+  - { offset: 0x156, size: 0x8, addend: 0x0, symName: _str_HD_ST4, symObjAddr: 0x19EE, symBinAddr: 0x100008126, symSize: 0x0 }
+  - { offset: 0x16B, size: 0x8, addend: 0x0, symName: _str_EZ_array, symBinAddr: 0x10000816C, symSize: 0x0 }
+  - { offset: 0x180, size: 0x8, addend: 0x0, symName: _str_HD_array, symBinAddr: 0x10000817C, symSize: 0x0 }
+  - { offset: 0x189, size: 0x8, addend: 0x0, symName: _clearScreen, symObjAddr: 0x0, symBinAddr: 0x100002650, symSize: 0x1C }
+  - { offset: 0x19E, size: 0x8, addend: 0x0, symName: _LV_stage_change, symObjAddr: 0x1C, symBinAddr: 0x10000266C, symSize: 0x52C }
+  - { offset: 0x1D0, size: 0x8, addend: 0x0, symName: _easy_mode, symObjAddr: 0x570, symBinAddr: 0x100002BC0, symSize: 0x67C }
+  - { offset: 0x2F8, size: 0x8, addend: 0x0, symName: _hard_mode, symObjAddr: 0xBFC, symBinAddr: 0x10000324C, symSize: 0x7D0 }
+  - { offset: 0x424, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x14DC, symBinAddr: 0x100003B2C, symSize: 0x214 }
 ...

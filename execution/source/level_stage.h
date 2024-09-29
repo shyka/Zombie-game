@@ -24,6 +24,18 @@ char str_EZ_ST1[4][4] =
 {{"1#*"}, 
  {"*1#"}, 
  {"#*1"}};
+ char str_EZ_ST4[4][4] = 
+{{"164"}, 
+ {"315"}, 
+ {"871"}};
+ char str_EZ_ST5[4][4] = 
+{{"1$5"}, 
+ {"91%"}, 
+ {"@21"}};
+ char str_EZ_ST6[4][4] = 
+{{"1!l"}, 
+ {"i1l"}, 
+ {"!l1"}};
 
 
 char str_HD_ST1[11][6] = 
@@ -69,7 +81,18 @@ char str_HD_ST1[11][6] =
  {"%?|~+"},
  {"%|?+~"},
  {"+|%?~"},
- {"|~%+?"}}; 
+ {"|~%+?"}};
+ char str_HD_ST5[11][6] = 
+{{"1~i$l"}, 
+ {"~1i%l"}, 
+ {"+|1%$"}, 
+ {"l|~1i"}, 
+ {"i+l|1"},
+ {"?l%|+"},
+ {"%?|i$"},
+ {"l|?%$"},
+ {"i|%?~"},
+ {"|~i+?"}}; 
 
 void LV_stage_change(int mode, int level)
 {
@@ -94,6 +117,24 @@ void LV_stage_change(int mode, int level)
             for(p = 0; p < 3; p++)
             {
                 strcpy(str_EZ_array[p], str_EZ_ST3[p]);
+            }
+            break;
+        case 4:
+            for(p = 0; p < 3; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST4[p]);
+            }
+            break;
+        case 5:
+            for(p = 0; p < 3; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST5[p]);
+            }
+            break;
+        case 6:
+            for(p = 0; p < 3; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST6[p]);
             }
             break;
         }
@@ -125,6 +166,11 @@ void LV_stage_change(int mode, int level)
                 strcpy(str_HD_array[p], str_HD_ST4[p]);
             }
             break;
+        case 5:
+            for(p = 0; p < 10; p++)
+            {
+                strcpy(str_HD_array[p], str_HD_ST5[p]);
+            }
         }
         break;
     }

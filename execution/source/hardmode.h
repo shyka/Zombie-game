@@ -9,7 +9,7 @@
 #include "level_stage.h"
 
 //定義所有的殭屍對應列表(zombie_spawn_tablet)
-char str_array[11][6]; 
+char str_HD_array[11][6]; 
 
 int hard_mode(void)
 {
@@ -22,7 +22,7 @@ int hard_mode(void)
     for(int i = 0; i < 4; i++)
     {
         num_hardmode = rand() % 10; // 使用Rand函數(亂數，不知道幾位)，並利用取餘數使數字介於我們想指定的範圍(0~9)
-        sscanf(str_array[num_hardmode], "%5s", line[i]); 
+        sscanf(str_HD_array[num_hardmode], "%5s", line[i]); 
     }
 
     // 輸出遊戲基礎四隨機殭屍
@@ -38,43 +38,43 @@ int hard_mode(void)
         switch (gamerchar)
         {
         case '1': // 對應打殭屍種類
-            strcpy(gamerin, str_array[0]);
+            strcpy(gamerin, str_HD_array[0]);
             clearScreen();
             break;
         case '2':
-            strcpy(gamerin, str_array[1]);
+            strcpy(gamerin, str_HD_array[1]);
             clearScreen();
             break;
         case '3':
-            strcpy(gamerin, str_array[2]);
+            strcpy(gamerin, str_HD_array[2]);
             clearScreen();
             break;
         case '4':
-            strcpy(gamerin, str_array[3]);
+            strcpy(gamerin, str_HD_array[3]);
             clearScreen();
             break;
         case '5':
-            strcpy(gamerin, str_array[4]);
+            strcpy(gamerin, str_HD_array[4]);
             clearScreen();
             break;
         case 'a':
-            strcpy(gamerin, str_array[5]);
+            strcpy(gamerin, str_HD_array[5]);
             clearScreen();
             break;
         case 's':
-            strcpy(gamerin, str_array[6]);
+            strcpy(gamerin, str_HD_array[6]);
             clearScreen();
             break;
         case 'd':
-            strcpy(gamerin, str_array[7]);
+            strcpy(gamerin, str_HD_array[7]);
             clearScreen();
             break;
         case 'f':
-            strcpy(gamerin, str_array[8]);
+            strcpy(gamerin, str_HD_array[8]);
             clearScreen();
             break;
         case 'g':
-            strcpy(gamerin, str_array[9]);
+            strcpy(gamerin, str_HD_array[9]);
             clearScreen();
             break;
         case '0': //跳脫遊戲(esc鍵)
@@ -123,7 +123,7 @@ int hard_mode(void)
             if (heart > 0 && exp_check < 100) // 血量、經驗值判斷
             {
                 num_hardmode = rand() % 10;
-                sscanf(str_array[num_hardmode], "%5s", line[0]); //重新生成line[0]
+                sscanf(str_HD_array[num_hardmode], "%5s", line[0]); //重新生成line[0]
                 printf("\t%s\n", line[0]);
                 printf("\t%s\n", line[1]);
                 printf("\t%s\n", line[2]);
@@ -136,7 +136,7 @@ int hard_mode(void)
                 for(int k = 0; k < 4; k++)
                 {
                     num_hardmode = rand() % 10;
-                    sscanf(str_array[num_hardmode], "%5s", line[k]); 
+                    sscanf(str_HD_array[num_hardmode], "%5s", line[k]); 
                 }
                 printf("\t%s\n", line[0]);
                 printf("\t%s\n", line[1]);
