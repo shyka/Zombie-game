@@ -6,18 +6,17 @@
 #include <time.h>
 #include <string.h>
 #include "clearscreen.h"
+#include "level_stage.h"
 
 //定義簡單模式所有的殭屍對應列表(zombie_spawn_tablet)
-char str_EZ_array[4][4] = 
-{{"100"}, 
- {"010"}, 
- {"001"}};
+char str_EZ_array[4][4];
 
 int easy_mode(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
-    int num_EZ ,score = 0, heart = 3, exp = 0, level = 1; // num對應每一行殭屍，score為分數，HEART為血量，EXP為經驗值，level代表目前所在等級
+    int num_EZ ,score = 0, heart = 3, exp = 0, exp_check, level = 1; // num對應每一行殭屍，score為分數，HEART為血量，EXP為經驗值，level代表目前所在等級
     char line[4][4], gamerin[4], gamernum; //line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamernum為使用者輸入
+    LV_stage_change(1,1); // 起始等級殭屍
     
     // 隨機生成三行殭屍(並儲存到指定變數中)
     for(int i = 0; i < 3; i++)
@@ -58,6 +57,12 @@ int easy_mode(void)
 
         if (key == 1) // key為遊戲結束控制字元
         {
+            if(exp >= 100) // 升級條件判斷
+            {
+                exp_check = exp;
+                exp -= 100;
+                level += 1;
+            }
             int cmp = strcmp(gamerin, line[2]); // 比較字串相同性
             if (cmp > 0) // str1 > str2
             {
@@ -72,27 +77,34 @@ int easy_mode(void)
                 printf("success, \t\t\tscore: %d", score);
                 printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
             }
-            else if (cmp < 0) // str1 < str2
+            else // str1 < str2
             {
                 heart -= 1;
                 printf("faulse, \t\t\tscore: %d", score);
                 printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
             }
-            // 升級條件判斷
-            if(exp >= 100)
+            if (heart > 0 && exp_check <100 ) // 血量、經驗值判斷
             {
-                exp -= 100;
-                level += 1;
-            }
-            // 下移程序
-            for(int zcount_line = 2; zcount_line > 0; zcount_line--)
-            {
-                strcpy(line[zcount_line], line[zcount_line-1]); //將上一行數字傳給下一行
-            }
-            if (heart > 0) // 血量判斷
-            {
+                // 下移程序
+                for(int zcount_line = 2; zcount_line > 0; zcount_line--)
+                {
+                    strcpy(line[zcount_line], line[zcount_line-1]); //將上一行數字傳給下一行
+                }
                 num_EZ = rand() % 3;
                 sscanf(str_EZ_array[num_EZ], "%3s", line[0]); //重新生成line[0]
+                printf("\t%s\n", line[0]);
+                printf("\t%s\n", line[1]);
+                printf("\t%s\n      >>\n", line[2]);
+            } 
+            else if( heart > 0 && exp_check >= 100)
+            {
+                LV_stage_change(1,level); // 當經驗值超過100時，將進入下個階段（level up)，須重新生成殭屍
+                exp_check = exp;
+                for(int k = 0; k < 3; k++)
+                {
+                    num_EZ = rand() % 3;
+                    sscanf(str_EZ_array[num_EZ], "%3s", line[k]); 
+                }
                 printf("\t%s\n", line[0]);
                 printf("\t%s\n", line[1]);
                 printf("\t%s\n      >>\n", line[2]);

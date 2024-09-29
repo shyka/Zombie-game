@@ -6,26 +6,18 @@
 #include <time.h>
 #include <string.h>
 #include "clearscreen.h"
+#include "level_stage.h"
 
 //定義所有的殭屍對應列表(zombie_spawn_tablet)
-char str_array[11][6] = 
-{{"10000"}, 
- {"01000"}, 
- {"00100"}, 
- {"00010"}, 
- {"00001"},
- {"?0000"},
- {"0?000"},
- {"00?00"},
- {"000?0"},
- {"0000?"}}; 
+char str_array[11][6]; 
 
 int hard_mode(void)
 {
     srand(time(NULL)); // 隨機數種子，利用時間做為種子碼
-    int num_hardmode , score = 0, heart = 3, exp = 0, level = 1; // num對應每一行殭屍，score為分數，HEART為血量，EXP為經驗值，LEVEL代表目前等級
+    int num_hardmode , score = 0, heart = 3, exp = 0, exp_check, level = 1; // num對應每一行殭屍，score為分數，HEART為血量，EXP為經驗值，LEVEL代表目前等級
     char line[5][6], gamerin[6], gamerchar; // line對應各行殭屍，gamerin為使用者輸入質對應要攻擊的殭屍種類，gamerchar為使用者輸入字元，gamernum則是對應的ascii數字
-    
+    LV_stage_change(2,1); // 起始等級殭屍
+
     // 隨機生成四行殭屍(並儲存到指定變數中)
     for(int i = 0; i < 4; i++)
     {
@@ -96,6 +88,13 @@ int hard_mode(void)
 
         if (key == 1) // key為遊戲結束控制字元
         {
+            // 升級條件判斷
+            if(exp >= 100)
+            {
+                exp_check = exp;
+                exp -= 100;
+                level += 1;
+            }
             int cmp = strcmp(gamerin, line[3]); // 比較第四行字串相同性
             if (cmp > 0) // str1 > str2
             {
@@ -110,27 +109,35 @@ int hard_mode(void)
                 printf("success, \t\t\tscore: %d", score);
                 printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
             }
-            else if (cmp < 0) // str1 < str2
+            else // str1 < str2
             {
                 heart -= 1;
                 printf("faulse, \t\t\tscore: %d", score);
                 printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
-            }
-            // 升級條件判斷
-            if(exp >= 100)
-            {
-                exp -= 100;
-                level += 1;
             }
             // 下移程序
             for(int zcount_line = 3; zcount_line > 0; zcount_line--)
             {
                 strcpy(line[zcount_line], line[zcount_line-1]); //將上一行數字傳給下一行
             }
-            if (heart > 0) // 血量判斷
+            if (heart > 0 && exp_check < 100) // 血量、經驗值判斷
             {
                 num_hardmode = rand() % 10;
                 sscanf(str_array[num_hardmode], "%5s", line[0]); //重新生成line[0]
+                printf("\t%s\n", line[0]);
+                printf("\t%s\n", line[1]);
+                printf("\t%s\n", line[2]);
+                printf("\t%s\n      >>\n", line[3]);
+            }
+            else if(heart > 0 && exp_check >= 100) // 當經驗值超過100時，將進入下個階段（level up)，須重新生成殭屍
+            {
+                LV_stage_change(2,level); // 改變階段
+                exp_check = exp;
+                for(int k = 0; k < 4; k++)
+                {
+                    num_hardmode = rand() % 10;
+                    sscanf(str_array[num_hardmode], "%5s", line[k]); 
+                }
                 printf("\t%s\n", line[0]);
                 printf("\t%s\n", line[1]);
                 printf("\t%s\n", line[2]);
