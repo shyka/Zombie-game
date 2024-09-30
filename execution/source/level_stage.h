@@ -172,6 +172,7 @@ void LV_stage_change(int mode, int level)
             {
                 strcpy(str_HD_array[p], str_HD_ST5[p]);
             }
+            break;
         }
         break;
     }
