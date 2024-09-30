@@ -83,7 +83,7 @@ int easy_mode(void)
                 printf("faulse, \t\t\tscore: %d", score);
                 printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
             }
-            if (heart > 0 && exp_check <100 ) // 血量、經驗值判斷
+            if (heart > 0 && exp_check < 100 ) // 血量、經驗值判斷
             {
                 // 下移程序
                 for(int zcount_line = 2; zcount_line > 0; zcount_line--)
