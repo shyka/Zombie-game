@@ -187,7 +187,7 @@ char str_HD_ST1[11][6] =
  {"#DIE#"},
  {"$DIE$"},
  {"?DIE?"},
- {"/DIE/"}};
+ {"/DIE/"}}; // kill screen
 
 
 void LV_stage_change(int mode, int level)
@@ -289,7 +289,7 @@ void LV_stage_change(int mode, int level)
             for(p = 0; p < 3; p++)
             {
                 x = rand() % 3;
-                strcpy(str_EZ_array[p], str_EZ_ST13[x]);
+                strcpy(str_EZ_array[x], str_EZ_ST13[x]);
             }
             break;
         }
