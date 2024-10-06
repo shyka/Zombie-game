@@ -36,6 +36,35 @@ char str_EZ_ST1[4][4] =
 {{"1!l"}, 
  {"i1l"}, 
  {"!l1"}};
+ char str_EZ_ST7[4][4] = 
+{{"1li"}, 
+ {"+1!"}, 
+ {"&31"}};
+ char str_EZ_ST8[4][4] = 
+{{"183"}, 
+ {"l1!"}, 
+ {"i*1"}};
+ char str_EZ_ST9[4][4] = 
+{{"1l#"}, 
+ {"-1$"}, 
+ {"|71"}};
+ char str_EZ_ST10[4][4] = 
+{{"1OU"}, 
+ {"A1E"}, 
+ {"GA1"}};
+ char str_EZ_ST11[4][4] = 
+{{"1$5"}, 
+ {"|1/"}, 
+ {"lJ1"}};
+ char str_EZ_ST12[4][4] = 
+{{"1Il"}, 
+ {"71:"}, 
+ {":$1"}};
+ char str_EZ_ST13[4][4] = 
+{{"DIE"}, 
+ {"DIE"}, 
+ {"DIE"}}; // kill screen
+
 
 
 char str_HD_ST1[11][6] = 
@@ -136,6 +165,65 @@ void LV_stage_change(int mode, int level)
             for(p = 0; p < 3; p++)
             {
                 strcpy(str_EZ_array[p], str_EZ_ST6[p]);
+            }
+            break;
+        case 7:
+            for(p = 0; p < 3; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST7[p]);
+            }
+            break;
+        case 8:
+            for(p = 0; p < 3; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST8[p]);
+            }
+            break;
+        case 9:
+            for(p = 0; p < 3; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST9[p]);
+            }
+            break;
+        case 10:
+            for(p = 0; p < 3; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST10[p]);
+            }
+            break;
+        case 12:
+            for(p = 0; p < 2; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST11[p]);
+            }
+            strcpy(str_EZ_array[2], str_EZ_ST6[2]);
+            break;
+        case 14:
+            for(p = 0; p < 2; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST12[p]);
+            }
+            strcpy(str_EZ_array[2], str_EZ_ST3[2]);
+            break;
+        case 16:
+            strcpy(str_EZ_array[0], str_EZ_ST9[0]);
+            strcpy(str_EZ_array[1], str_EZ_ST4[1]);
+            strcpy(str_EZ_array[2], str_EZ_ST7[2]);
+            break;
+        case 18:
+            strcpy(str_EZ_array[0], str_EZ_ST2[0]);
+            strcpy(str_EZ_array[1], str_EZ_ST11[1]);
+            strcpy(str_EZ_array[2], str_EZ_ST8[2]);
+            break;
+        case 20:
+            strcpy(str_EZ_array[0], str_EZ_ST5[0]);
+            strcpy(str_EZ_array[1], str_EZ_ST10[1]);
+            strcpy(str_EZ_array[2], str_EZ_ST6[2]);
+            break;
+        case 21:
+            for(p = 0; p < 3; p++)
+            {
+                strcpy(str_EZ_array[p], str_EZ_ST13[p]);
             }
             break;
         }
