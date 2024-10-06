@@ -37,16 +37,16 @@ char str_EZ_ST1[4][4] =
  {"i1l"}, 
  {"!l1"}};
  char str_EZ_ST7[4][4] = 
-{{"1li"}, 
- {"+1!"}, 
- {"&31"}};
+{{"1+3"}, 
+ {"-10"}, 
+ {"2-1"}};
  char str_EZ_ST8[4][4] = 
 {{"183"}, 
  {"l1!"}, 
- {"i*1"}};
+ {"i]1"}};
  char str_EZ_ST9[4][4] = 
 {{"1l#"}, 
- {"-1$"}, 
+ {")1$"}, 
  {"|71"}};
  char str_EZ_ST10[4][4] = 
 {{"1OU"}, 
@@ -61,9 +61,9 @@ char str_EZ_ST1[4][4] =
  {"71:"}, 
  {":$1"}};
  char str_EZ_ST13[4][4] = 
-{{"DIE"}, 
- {"DIE"}, 
- {"DIE"}}; // kill screen
+{{"dIE"}, 
+ {"DiE"}, 
+ {"DIe"}}; // kill screen
 
 
 
@@ -121,7 +121,73 @@ char str_HD_ST1[11][6] =
  {"%?|i$"},
  {"l|?%$"},
  {"i|%?~"},
- {"|~i+?"}}; 
+ {"|~i+?"}};
+ char str_HD_ST6[11][6] = 
+{{"1~0$p"}, 
+ {"917%l"}, 
+ {":L1+j"}, 
+ {"l2~1P"}, 
+ {"$+l%1"},
+ {"?+d7+"},
+ {"9?|6$"},
+ {"lI?%0"},
+ {"iI:?6"},
+ {"8~3+?"}};
+ char str_HD_ST7[11][6] = 
+{{"1+3=4"}, 
+ {"+1=0!"}, 
+ {"6-1=5"}, 
+ {"0!=1!"}, 
+ {"8/8=1"},
+ {"?pple"},
+ {"l?ist"},
+ {"do?ge"},
+ {"lea?!"},
+ {"lyin?"}};
+ char str_HD_ST8[11][6] = 
+{{"12345"}, 
+ {"21345"}, 
+ {"23145"}, 
+ {"23415"}, 
+ {"23451"},
+ {"?!@#$"},
+ {"$?#@!"},
+ {"$!?#@"},
+ {"#!$?@"},
+ {"#@!$?"}};
+ char str_HD_ST9[11][6] = 
+{{"1__l_"}, 
+ {"_1__i"}, 
+ {"__1_L"}, 
+ {"I__1_"}, 
+ {"i___1"},
+ {"?MUWD"},
+ {"H?JQA"},
+ {"LK?OP"},
+ {"TSV?K"},
+ {"IAUX?"}};
+ char str_HD_ST10[11][6] = 
+{{"1[]|["}, 
+ {"[1[|]"}, 
+ {"|[1[["}, 
+ {"][|1]"}, 
+ {"|[|]1"},
+ {"?EVER"},
+ {"G?NNA"},
+ {"GI?E~"},
+ {"YOU?~"},
+ {"UP~~?"}};
+ char str_HD_ST11[11][6] = 
+{{"[DIE]"}, 
+ {"{DIE}"}, 
+ {":DIE:"}, 
+ {"!DIE!"}, 
+ {"(DIE)"},
+ {"|DIE|"},
+ {"#DIE#"},
+ {"$DIE$"},
+ {"?DIE?"},
+ {"/DIE/"}};
 
 
 void LV_stage_change(int mode, int level)
@@ -193,49 +259,37 @@ void LV_stage_change(int mode, int level)
             }
             break;
         case 12:
-            x = rand() % 3;
-            for(p = 0; p < 2; p++)
+            for(p = 0; p < 3; p++)
             {
                 strcpy(str_EZ_array[p], str_EZ_ST11[p]);
             }
-            strcpy(str_EZ_array[2], str_EZ_ST6[x]);
             break;
         case 14:
-            x = rand() % 3;
-            for(p = 0; p < 2; p++)
+            for(p = 0; p < 3; p++)
             {
                 strcpy(str_EZ_array[p], str_EZ_ST12[p]);
             }
-            strcpy(str_EZ_array[2], str_EZ_ST3[x]);
             break;
         case 16:
-            x = rand() % 3;
-            strcpy(str_EZ_array[0], str_EZ_ST9[x]);
-            x = rand() % 3;
-            strcpy(str_EZ_array[1], str_EZ_ST4[x]);
-            x = rand() % 3;
-            strcpy(str_EZ_array[2], str_EZ_ST7[x]);
+            strcpy(str_EZ_array[0], str_EZ_ST9[0]);
+            strcpy(str_EZ_array[1], str_EZ_ST4[1]);
+            strcpy(str_EZ_array[2], str_EZ_ST7[2]);
             break;
         case 18:
-            x = rand() % 3;
-            strcpy(str_EZ_array[0], str_EZ_ST2[x]);
-            x = rand() % 3;
-            strcpy(str_EZ_array[1], str_EZ_ST11[x]);
-            x = rand() % 3;
-            strcpy(str_EZ_array[2], str_EZ_ST8[x]);
+            strcpy(str_EZ_array[0], str_EZ_ST2[0]);
+            strcpy(str_EZ_array[1], str_EZ_ST11[1]);
+            strcpy(str_EZ_array[2], str_EZ_ST8[2]);
             break;
         case 20:
-            x = rand() % 3;
-            strcpy(str_EZ_array[0], str_EZ_ST5[x]);
-            x = rand() % 3;
-            strcpy(str_EZ_array[1], str_EZ_ST10[x]);
-            x = rand() % 3;
-            strcpy(str_EZ_array[2], str_EZ_ST6[x]);
+            strcpy(str_EZ_array[0], str_EZ_ST5[0]);
+            strcpy(str_EZ_array[1], str_EZ_ST10[1]);
+            strcpy(str_EZ_array[2], str_EZ_ST6[2]);
             break;
         case 21:
             for(p = 0; p < 3; p++)
             {
-                strcpy(str_EZ_array[p], str_EZ_ST13[p]);
+                x = rand() % 3;
+                strcpy(str_EZ_array[p], str_EZ_ST13[x]);
             }
             break;
         }
@@ -271,6 +325,42 @@ void LV_stage_change(int mode, int level)
             for(p = 0; p < 10; p++)
             {
                 strcpy(str_HD_array[p], str_HD_ST5[p]);
+            }
+            break;
+        case 6:
+            for(p = 0; p < 10; p++)
+            {
+                strcpy(str_HD_array[p], str_HD_ST6[p]);
+            }
+            break;
+        case 7:
+            for(p = 0; p < 10; p++)
+            {
+                strcpy(str_HD_array[p], str_HD_ST7[p]);
+            }
+            break;
+        case 10:
+            for(p = 0; p < 10; p++)
+            {
+                strcpy(str_HD_array[p], str_HD_ST8[p]);
+            }
+            break;
+        case 15:
+            for(p = 0; p < 10; p++)
+            {
+                strcpy(str_HD_array[p], str_HD_ST9[p]);
+            }
+            break;
+        case 20:
+            for(p = 0; p < 10; p++)
+            {
+                strcpy(str_HD_array[p], str_HD_ST10[p]);
+            }
+            break;
+        case 21:
+            for(p = 0; p < 10; p++)
+            {
+                strcpy(str_HD_array[p], str_HD_ST11[p]);
             }
             break;
         }
