@@ -57,10 +57,10 @@ int easy_mode(void)
 
         if (key == 1) // key為遊戲結束控制字元
         {
-            if(exp >= 100) // 升級條件判斷
+            if(exp >=25) // 升級條件判斷
             {
                 exp_check = exp;
-                exp -= 100;
+                exp -= 25;
                 level += 1;
             }
             int cmp = strcmp(gamerin, line[2]); // 比較字串相同性
@@ -83,7 +83,7 @@ int easy_mode(void)
                 printf("faulse, \t\t\tscore: %d", score);
                 printf("  HP: %d  EXP: %d  LV.%d\n\n", heart, exp, level);
             }
-            if (heart > 0 && exp_check < 100 ) // 血量、經驗值判斷
+            if (heart > 0 && exp_check < 25) // 血量、經驗值判斷
             {
                 // 下移程序
                 for(int zcount_line = 2; zcount_line > 0; zcount_line--)
@@ -96,7 +96,7 @@ int easy_mode(void)
                 printf("\t%s\n", line[1]);
                 printf("\t%s\n      >>\n", line[2]);
             } 
-            else if( heart > 0 && exp_check >= 100)
+            else if( heart > 0 && exp_check >= 25)
             {
                 LV_stage_change(1,level); // 當經驗值超過100時，將進入下個階段（level up)，須重新生成殭屍
                 exp_check = exp;

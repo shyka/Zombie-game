@@ -37,7 +37,7 @@ int hard_mode(void)
         scanf(" %c", &gamerchar);
         switch (gamerchar)
         {
-        case '1': // 對應打殭屍種類
+        case '1': // 對應打殭屍種類(1 數字鍵)
             strcpy(gamerin, str_HD_array[0]);
             clearScreen();
             break;
@@ -57,7 +57,7 @@ int hard_mode(void)
             strcpy(gamerin, str_HD_array[4]);
             clearScreen();
             break;
-        case 'a':
+        case 'a': // 對應打殭屍種類(? 字母鍵)
             strcpy(gamerin, str_HD_array[5]);
             clearScreen();
             break;
@@ -89,10 +89,10 @@ int hard_mode(void)
         if (key == 1) // key為遊戲結束控制字元
         {
             // 升級條件判斷
-            if(exp >= 100)
+            if(exp >= 25)
             {
                 exp_check = exp;
-                exp -= 100;
+                exp -= 25;
                 level += 1;
             }
             int cmp = strcmp(gamerin, line[3]); // 比較第四行字串相同性
@@ -120,7 +120,7 @@ int hard_mode(void)
             {
                 strcpy(line[zcount_line], line[zcount_line-1]); //將上一行數字傳給下一行
             }
-            if (heart > 0 && exp_check < 100) // 血量、經驗值判斷
+            if (heart > 0 && exp_check < 25) // 血量、經驗值判斷
             {
                 num_hardmode = rand() % 10;
                 sscanf(str_HD_array[num_hardmode], "%5s", line[0]); //重新生成line[0]
@@ -129,7 +129,7 @@ int hard_mode(void)
                 printf("\t%s\n", line[2]);
                 printf("\t%s\n      >>\n", line[3]);
             }
-            else if(heart > 0 && exp_check >= 100) // 當經驗值超過100時，將進入下個階段（level up)，須重新生成殭屍
+            else if(heart > 0 && exp_check >= 25) // 當經驗值超過100時，將進入下個階段（level up)，須重新生成殭屍
             {
                 LV_stage_change(2,level); // 改變階段
                 exp_check = exp;
