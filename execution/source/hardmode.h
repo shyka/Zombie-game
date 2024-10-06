@@ -132,6 +132,7 @@ int hard_mode(void)
             else if(heart > 0 && exp_check >= 25) // 當經驗值超過100時，將進入下個階段（level up)，須重新生成殭屍
             {
                 LV_stage_change(2,level); // 改變階段
+                heart += 1; // 升級獎勵，HP+1
                 exp_check = exp;
                 for(int k = 0; k < 4; k++)
                 {

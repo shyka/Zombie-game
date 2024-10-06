@@ -100,6 +100,7 @@ int easy_mode(void)
             {
                 LV_stage_change(1,level); // 當經驗值超過100時，將進入下個階段（level up)，須重新生成殭屍
                 exp_check = exp;
+                heart += 1; // 升級獎勵，HP+1
                 for(int k = 0; k < 3; k++)
                 {
                     num_EZ = rand() % 3;
