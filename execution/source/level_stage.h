@@ -10,7 +10,7 @@
 //定義所有的殭屍對應列表(zombie_spawn_tablet)
 char str_EZ_array[4][4]; //easy
 char str_HD_array[11][6]; //hard
-int p = 0;
+int p = 0, x;
 
 char str_EZ_ST1[4][4] = 
 {{"100"}, 
@@ -126,6 +126,7 @@ char str_HD_ST1[11][6] =
 
 void LV_stage_change(int mode, int level)
 {
+    srand(time(NULL));
     switch(mode)
     {
     case 1:
@@ -192,33 +193,44 @@ void LV_stage_change(int mode, int level)
             }
             break;
         case 12:
+            x = rand() % 3;
             for(p = 0; p < 2; p++)
             {
                 strcpy(str_EZ_array[p], str_EZ_ST11[p]);
             }
-            strcpy(str_EZ_array[2], str_EZ_ST6[2]);
+            strcpy(str_EZ_array[2], str_EZ_ST6[x]);
             break;
         case 14:
+            x = rand() % 3;
             for(p = 0; p < 2; p++)
             {
                 strcpy(str_EZ_array[p], str_EZ_ST12[p]);
             }
-            strcpy(str_EZ_array[2], str_EZ_ST3[2]);
+            strcpy(str_EZ_array[2], str_EZ_ST3[x]);
             break;
         case 16:
-            strcpy(str_EZ_array[0], str_EZ_ST9[0]);
-            strcpy(str_EZ_array[1], str_EZ_ST4[1]);
-            strcpy(str_EZ_array[2], str_EZ_ST7[2]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[0], str_EZ_ST9[x]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[1], str_EZ_ST4[x]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[2], str_EZ_ST7[x]);
             break;
         case 18:
-            strcpy(str_EZ_array[0], str_EZ_ST2[0]);
-            strcpy(str_EZ_array[1], str_EZ_ST11[1]);
-            strcpy(str_EZ_array[2], str_EZ_ST8[2]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[0], str_EZ_ST2[x]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[1], str_EZ_ST11[x]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[2], str_EZ_ST8[x]);
             break;
         case 20:
-            strcpy(str_EZ_array[0], str_EZ_ST5[0]);
-            strcpy(str_EZ_array[1], str_EZ_ST10[1]);
-            strcpy(str_EZ_array[2], str_EZ_ST6[2]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[0], str_EZ_ST5[x]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[1], str_EZ_ST10[x]);
+            x = rand() % 3;
+            strcpy(str_EZ_array[2], str_EZ_ST6[x]);
             break;
         case 21:
             for(p = 0; p < 3; p++)
