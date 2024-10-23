@@ -8,8 +8,8 @@ file name : zombie.test.c
 目前進度（代辦事項）    
 ---
 >- [x] 基礎程式大綱（60分版）  
->- [ ] degbug測試    
->- [ ] word    
->- [ ] ppt    
->- [ ] HP顯示    
->- [ ] 增添和優化遊戲程式    
+>- [x] degbug測試    
+>- [x] word    
+>- [x] ppt    
+>- [x] HP顯示    
+>- [x] 增添和優化遊戲程式    
